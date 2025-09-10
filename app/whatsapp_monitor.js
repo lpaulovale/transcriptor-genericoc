@@ -77,7 +77,7 @@ function getUserSession(userId) {
 // --- 5. CLIENT EVENT HANDLERS ---
 client.on('qr', (qr) => {
     console.log('Scan the QR code below with your WhatsApp mobile app:');
-    qrcode.generate(qr, { small: true });
+    qrcode.generate(qr, { small: false });
 });
 
 client.on('ready', async () => {
