@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+  # Container A: FastAPI Backend
+  acompanhar-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: acompanhar-api
+    ports:
+      - "8080:8000"  # Host port 8080 -> Container port 8000
+    volumes:
+      - ./logs:/app/logs
+      - ./results:/app/results
+    environment:
+      - NODE_ENV=production
+      - PYTHON_ENV=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: unless-stopped
+    networks:
+      - acompanhar-network
+
+  # Container B: WhatsApp Monitor
+  acompanhar-whatsapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.whatsapp
+    container_name: acompanhar-whatsapp
+    ports:
+      - "3001:3000"  # Host port 3001 -> Container port 3000
+    volumes:
+      - ./messages:/app/messages
+      - ./audio_files:/app/audio_files
+      - ./media_files:/app/media_files
+      - ./visit_documents:/app/visit_documents
+      - whatsapp_session:/app/.wwebjs_auth
+    environment:
+      - NODE_ENV=production
+      - API_BASE_URL=http://acompanhar-api:8000
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    depends_on:
+      - acompanhar-api
+    networks:
+      - acompanhar-network
+
+volumes:
+  whatsapp_session:
+
+networks:
+  acompanhar-network:
+    driver: bridge

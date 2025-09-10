@@ -1,0 +1,120 @@
+# Transcriptor Genérico - Arquivos e diretórios ignorados
+
+# Diretórios de dados do projeto
+audio_files/
+media_files/
+messages/
+results/
+visit_documents/
+
+# Arquivos individuais (caso existam na raiz)
+audio_files
+media_files
+messages
+results
+visit_documents
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+*.tmp
+*.temp
+temp/
+
+# Configurações locais
+.env
+.env.local
+config.local.*
+
+# Docker
+.dockerignore
+
+# Sistema operacional
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.nfs*
+
+# IDEs e Editores
+# VSCode
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Node.js (caso use)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (caso use)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Arquivos de backup
+*.bak
+*.backup
+*.old
+
+# Certificados e chaves
+*.pem
+*.key
+*.cert
+*.crt
+
+# Dados sensíveis
+secrets/
+credentials/
